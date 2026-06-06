@@ -889,12 +889,16 @@
     syncTopbarHeight();
     window.addEventListener('resize', syncTopbarHeight);
 
-    // Hide topbar on scroll-down, show on scroll-up
+    // Hide topbar on scroll-down only on mobile (<768px)
     let lastScrollY = 0;
     window.addEventListener('scroll', () => {
         const curr = window.scrollY;
-        if (curr > lastScrollY && curr > 80) {
-            topbar.classList.add('is-hidden');
+        if (window.innerWidth < 768) {
+            if (curr > lastScrollY && curr > 80) {
+                topbar.classList.add('is-hidden');
+            } else {
+                topbar.classList.remove('is-hidden');
+            }
         } else {
             topbar.classList.remove('is-hidden');
         }
