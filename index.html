@@ -27,8 +27,6 @@
         img { max-width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
         a { text-decoration: none; }
         .container { max-width: 1050px; margin: 0 auto; padding: 0 20px; }
-        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
-
         /* ─── Sticky top announcement bar ─── */
         .topbar {
             position: sticky; top: 0; z-index: 200;
@@ -227,41 +225,71 @@
         /* ─── FAQ / Footer ─── */
         .footer-bg {
             background: var(--green); color: var(--white);
-            padding: 60px 0;
+            padding: 64px 0 0;
             margin-left: calc(-50vw + 50%);
             margin-right: calc(-50vw + 50%);
         }
-        .footer-grid { max-width: 1050px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: 1.2fr 1.8fr; gap: 50px; }
-        .footer-left h2 { font-size: 18px; text-transform: uppercase; letter-spacing: 4px; }
-        .footer-talks { font-family: var(--script); font-size: 66px; color: var(--gold); line-height: 0.85; margin-bottom: 4px; }
-        .footer-faq-badge { font-size: 14px; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 35px; display: block; }
-        .faq-item { margin-bottom: 22px; }
-        .faq-q { font-size: 14px; font-weight: 600; color: var(--gold); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
-        .faq-a { font-size: 14px; line-height: 1.65; color: #e0e6e2; font-weight: 300; }
+        .footer-grid {
+            max-width: 1050px; margin: 0 auto; padding: 0 20px 50px;
+            display: grid; grid-template-columns: 1fr 1.4fr 1.1fr; gap: 50px;
+        }
 
-        .spoilers { margin-top: 35px; display: flex; flex-direction: column; gap: 12px; }
-        .spoiler { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; }
-        .spoiler[open] { background: rgba(255,255,255,0.06); border-color: var(--gold); }
-        .spoiler summary { padding: 16px 22px; font: 600 13px/1 var(--sans); text-transform: uppercase; letter-spacing: 2px; color: var(--white); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; user-select: none; }
-        .spoiler summary::-webkit-details-marker { display: none; }
-        .spoiler summary::after { content: '+'; font-size: 20px; color: var(--gold); font-weight: 300; }
-        .spoiler[open] summary::after { content: '−'; }
-        .spoiler-body { padding: 22px; border-top: 1px solid rgba(255,255,255,0.08); color: #e0e6e2; }
-        .contact-item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--white); margin-bottom: 14px; }
-        .contact-item svg { fill: var(--gold); width: 18px; height: 18px; flex-shrink: 0; }
-        .hours-table { font-size: 13px; color: #e0e6e2; width: 100%; }
-        .hours-table td { padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-        .hours-table td:last-child { text-align: right; }
-        .map-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 24px; }
-        .map-iframe { width: 100%; max-width: 300px; height: 240px; border: 0; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
-        .directions-btn { background: var(--gold); color: var(--green); padding: 11px 26px; border-radius: 22px; font: 700 11px/1 var(--sans); text-transform: uppercase; letter-spacing: 1.5px; transition: background 0.25s, transform 0.2s; }
-        .directions-btn:hover { background: var(--white); transform: translateY(-1px); }
-        .socials-row { display: flex; justify-content: center; gap: 35px; padding: 26px 20px; }
-        .soc-link { display: flex; flex-direction: column; align-items: center; gap: 9px; color: var(--white); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.25s; }
-        .soc-link svg { width: 26px; height: 26px; fill: var(--gold); transition: transform 0.25s, fill 0.25s; }
+        /* col 1 — brand */
+        .footer-brand h2 { font-size: 17px; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 2px; }
+        .footer-talks { font-family: var(--script); font-size: 62px; color: var(--gold); line-height: 0.85; margin-bottom: 14px; }
+        .footer-brand-sub { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 22px; }
+        .footer-brand-img { border-radius: 4px; overflow: hidden; height: 160px; margin-bottom: 22px; }
+        .footer-brand-img img { width: 100%; height: 100%; object-fit: cover; }
+        .f-socials { display: flex; gap: 20px; }
+        .soc-link { display: flex; flex-direction: column; align-items: center; gap: 7px; color: rgba(255,255,255,0.5); font-size: 10px; text-transform: uppercase; letter-spacing: 1px; transition: color 0.25s; }
+        .soc-link svg { width: 22px; height: 22px; fill: var(--gold); transition: transform 0.25s, fill 0.25s; }
         .soc-link:hover { color: var(--gold); }
         .soc-link:hover svg { transform: scale(1.15); fill: var(--white); }
-        .footer-motto { grid-column: span 2; text-align: right; font-family: var(--script); font-size: 32px; color: var(--gold); margin-top: 35px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.08); }
+
+        /* col 2 — FAQ accordion */
+        .f-col-label { font-size: 10px; text-transform: uppercase; letter-spacing: 4px; color: var(--gold); font-weight: 600; margin-bottom: 20px; display: block; }
+        .faq-acc { display: flex; flex-direction: column; gap: 6px; }
+        .faq-acc-item { border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; }
+        .faq-acc-item[open] { border-color: rgba(197,168,128,0.45); background: rgba(255,255,255,0.04); }
+        .faq-acc-item summary {
+            padding: 14px 18px; cursor: pointer; list-style: none;
+            display: flex; justify-content: space-between; align-items: center;
+            font: 600 12.5px/1.3 var(--sans); letter-spacing: 0.5px; color: var(--white);
+            user-select: none;
+        }
+        .faq-acc-item summary::-webkit-details-marker { display: none; }
+        .faq-acc-item summary::after { content: '+'; font-size: 18px; color: var(--gold); font-weight: 300; flex-shrink: 0; margin-left: 12px; }
+        .faq-acc-item[open] summary::after { content: '−'; }
+        .faq-acc-body { padding: 14px 18px 18px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 13.5px; color: rgba(224,230,226,0.85); line-height: 1.7; font-weight: 300; }
+
+        /* col 3 — contacts (always visible) */
+        .footer-contact-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 22px; }
+        .contact-item { display: flex; align-items: flex-start; gap: 11px; font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.55; }
+        .contact-item svg { fill: var(--gold); width: 17px; height: 17px; flex-shrink: 0; margin-top: 2px; }
+        .contact-item a { color: rgba(255,255,255,0.85); transition: color 0.2s; }
+        .contact-item a:hover { color: var(--gold); }
+        .hours-table { font-size: 12.5px; color: rgba(224,230,226,0.75); width: 100%; margin-bottom: 20px; }
+        .hours-table td { padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .hours-table td:last-child { text-align: right; }
+        .hours-closed { color: rgba(255,255,255,0.3); }
+        .directions-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--gold); color: var(--green);
+            padding: 10px 22px; border-radius: 20px;
+            font: 700 11px/1 var(--sans); text-transform: uppercase; letter-spacing: 1.5px;
+            transition: background 0.25s, transform 0.2s;
+        }
+        .directions-btn:hover { background: var(--white); transform: translateY(-1px); }
+        .directions-btn svg { width: 14px; height: 14px; fill: var(--green); }
+
+        /* footer bottom bar */
+        .footer-bottom {
+            max-width: 1050px; margin: 0 auto; padding: 18px 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+        }
+        .footer-motto { font-family: var(--script); font-size: 28px; color: var(--gold); }
+        .footer-copy { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 1px; }
 
         /* ─── Floating book + scroll-top ─── */
         .fab-book {
@@ -288,28 +316,95 @@
         .scroll-top-btn svg { width: 20px; height: 20px; fill: var(--white); }
 
         /* ─── Responsive ─── */
+
+        /* prevent full-width sections from causing h-scroll */
+        html, body { overflow-x: hidden; }
+
+        @media (max-width: 1024px) {
+            .ext-grid { grid-template-columns: 1fr 1fr; }
+        }
+
         @media (max-width: 900px) {
             .ext-grid { grid-template-columns: 1fr; }
             .bundles-grid { grid-template-columns: 1fr; }
             .gifts-grid { grid-template-columns: 1fr 1fr; }
-            .fab-book span.fab-label { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+            .fab-book .fab-label { display: none; }
+            .fab-book { padding: 14px 18px; border-radius: 50%; }
+            .fab-book svg { width: 22px; height: 22px; }
         }
+
         @media (max-width: 768px) {
+            /* topbar: address on its own row, smaller text */
+            .topbar { flex-direction: column; gap: 6px; padding: 8px 16px; text-align: center; }
+            .topbar-address { order: 2; font-size: 10px; opacity: 0.6; }
+            .topbar-book { order: 1; }
+            .topbar-phone { order: 0; }
+
             .artist-section { grid-template-columns: 1fr; }
-            .services-grid { grid-template-columns: 1fr; gap: 24px; }
-            .etiquette-grid { grid-template-columns: 1fr; }
+            .artist-section > div:first-child { order: 2; }
+            .artist-img-wrap { height: 320px; order: 1; }
+
+            .services-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .service-img { height: 200px; }
+
+            .etiquette-grid { grid-template-columns: 1fr 1fr; }
+
             .artists-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-motto { grid-column: span 1; text-align: center; }
+
+            /* special services 2-col → 1-col */
+            div[style*="1.6fr"] { display: flex !important; flex-direction: column; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
+
             .cta-banner { padding: 36px 22px; }
-            .menu-block { padding: 24px; }
+            .cta-banner-script { font-size: 38px; }
+            .cta-banner-title { font-size: 22px; }
+            .btn-gold-lg { padding: 14px 32px; font-size: 12px; }
+
+            .menu-block { padding: 22px 18px; }
+            .block-cta { flex-direction: column; align-items: flex-start; }
+
+            .single-svc { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .single-svc-price { text-align: left; }
+
+            .sec-script { font-size: 44px !important; }
+
+            .lead-title { font-size: 26px; }
+            .lead-form { flex-direction: column; }
+            .lead-input { flex: 1 1 auto; }
         }
+
         @media (max-width: 600px) {
-            .topbar { font-size: 10px; gap: 10px; }
-            .logo-title { font-size: 34px; }
-            .gifts-grid { grid-template-columns: 1fr 1fr; }
-            .proof-strip { gap: 14px; }
+            /* topbar: collapse to just phone + book button, hide address */
+            .topbar { flex-direction: row; justify-content: space-between; padding: 9px 16px; gap: 0; }
+            .topbar-address { display: none; }
+            .topbar-text { font-size: 11px; }
+
+            .logo-title { font-size: 32px; }
+            .site-header { padding: 40px 16px 30px; }
+            .avatar-wrap { width: 88px; height: 132px; }
+
+            .services-grid { grid-template-columns: 1fr; gap: 20px; }
+
+            .proof-strip { gap: 12px; }
             .proof-sep { display: none; }
+
+            .etiquette-grid { grid-template-columns: 1fr; }
+
+            .gifts-grid { grid-template-columns: 1fr 1fr; }
+            .bundles-grid { grid-template-columns: 1fr; }
+
+            .footer-talks { font-size: 48px; }
+            .footer-motto { font-size: 22px; }
+
+            .scroll-top-btn { bottom: 82px; right: 16px; }
+            .fab-book { bottom: 16px; right: 16px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { transition: none !important; animation: none !important; }
         }
     </style>
 </head>
@@ -317,9 +412,9 @@
 
 <!-- Sticky top bar -->
 <div class="topbar" id="topbar">
-    <span class="topbar-text">✦ <strong>Studio City, LA</strong> · 4444 Lankershim Blvd, Suite 207</span>
+    <span class="topbar-text topbar-phone"><strong>717-268-9004</strong></span>
     <a href="https://browsreligion.as.me/" target="_blank" rel="noopener" class="topbar-book">Book Online</a>
-    <span class="topbar-text"><strong>717-268-9004</strong></span>
+    <span class="topbar-text topbar-address">✦ <strong>Studio City, LA</strong> · 4444 Lankershim Blvd, Suite 207</span>
 </div>
 
 <div class="container">
@@ -669,60 +764,95 @@
 <!-- FAQ / Footer -->
 <div class="footer-bg" id="contact">
     <div class="footer-grid">
-        <div class="footer-left">
+
+        <!-- Col 1: Brand -->
+        <div class="footer-brand">
             <h2>browsreligion</h2>
             <div class="footer-talks">talks.</div>
-            <span class="footer-faq-badge">FAQ</span>
-            <div style="overflow:hidden;border-radius:4px;margin-bottom:12px;height:120px"><img src="image/bottomIMG1.png" alt="" style="object-fit:cover;width:100%;height:100%"></div>
-            <div style="overflow:hidden;border-radius:4px;height:160px"><img src="image/bottomIMG2.png" alt="" style="object-fit:cover;width:100%;height:100%"></div>
+            <p class="footer-brand-sub">Luxury brow &amp; lash studio<br>Studio City, Los Angeles</p>
+            <div class="footer-brand-img">
+                <img src="image/bottomIMG1.png" alt="">
+            </div>
+            <div class="f-socials">
+                <a href="https://www.instagram.com/browsreligion" target="_blank" rel="noopener" class="soc-link">
+                    <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    <span>Instagram</span>
+                </a>
+                <a href="#" class="soc-link">
+                    <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+                    <span>Facebook</span>
+                </a>
+                <a href="#" class="soc-link">
+                    <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77 0 2.89 2.89 0 0 1 2.89-2.89h.56V9.44h-.56a6.33 6.33 0 1 0 6.33 6.33V8.81a8.45 8.45 0 0 0 4.13 1.09V6.69z"/></svg>
+                    <span>TikTok</span>
+                </a>
+            </div>
         </div>
-        <div class="footer-right">
-            <div class="faq-item"><p class="faq-q">What services do you offer?</p><p class="faq-a">From premium brow shaping and lamination to luxury custom lash extensions — we design everything to frame your natural beauty perfectly.</p></div>
-            <div class="faq-item"><p class="faq-q">How long does a typical appointment take?</p><p class="faq-a">A Signature Brow Shape takes 30–45 min, Lamination takes up to 1 hr, and a Volume Full Set can take up to 2.5 hours of precision work.</p></div>
-            <div class="faq-item"><p class="faq-q">Can you help me choose a style?</p><p class="faq-a">Absolutely! We examine your bone structure, hair growth pattern, and personal styling goals during extended consultations to map a completely bespoke look.</p></div>
-            <div class="faq-item"><p class="faq-q">What is your lash refill policy?</p><p class="faq-a">Fills every 2–3 weeks. 60% remaining for a 2-week fill; 40–50% for 3-week. Beyond 3 weeks requires a fresh Full Set.</p></div>
 
-            <div class="spoilers">
-                <details class="spoiler">
-                    <summary>Contacts & Hours</summary>
-                    <div class="spoiler-body">
-                        <div style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:20px">
-                            <div>
-                                <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>717-268-9004</span></div>
-                                <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><span>info@browsreligion.com</span></div>
-                                <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><div>4444 Lankershim Blvd<br>Toluca Lake, CA 91602<br>Suite 207 (Second Floor)</div></div>
-                            </div>
-                            <div>
-                                <table class="hours-table">
-                                    <tr><td>MON</td><td>Closed</td></tr>
-                                    <tr><td>TUE</td><td>9:00–7:00</td></tr>
-                                    <tr><td>WED</td><td>9:00–7:00</td></tr>
-                                    <tr><td>THU</td><td>9:00–7:00</td></tr>
-                                    <tr><td>FRI</td><td>9:00–7:00</td></tr>
-                                    <tr><td>SAT</td><td>10:00–6:00</td></tr>
-                                    <tr><td>SUN</td><td>Closed</td></tr>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="map-wrap">
-                            <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317.87233787154764!2d-118.3667091330127!3d34.15176373103451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bf5c99971e8b%3A0xbf817ccfb81d309a!2sBrowsReligion%20%7C%20Brows%20%26%20Lash%20Services!5e1!3m2!1suk!2sat!4v1779524545761!5m2!1suk!2sat" allowfullscreen="" loading="lazy"></iframe>
-                            <a href="https://maps.google.com/?q=4444+Lankershim+Blvd+Toluca+Lake+CA+91602" target="_blank" rel="noopener" class="directions-btn">Get Directions</a>
-                        </div>
-                    </div>
+        <!-- Col 2: FAQ accordion -->
+        <div>
+            <span class="f-col-label">Frequently Asked</span>
+            <div class="faq-acc">
+                <details class="faq-acc-item" open>
+                    <summary>What services do you offer?</summary>
+                    <div class="faq-acc-body">Premium brow shaping, lamination, and bespoke lash extensions — everything designed to frame your natural beauty. Both Alena (Master Artist) and Tanya (Brow / Lash Specialist) are available to book.</div>
                 </details>
-                <details class="spoiler">
-                    <summary>Social Media</summary>
-                    <div class="spoiler-body">
-                        <div class="socials-row">
-                            <a href="https://www.instagram.com/browsreligion" target="_blank" rel="noopener" class="soc-link"><svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg><span>Instagram</span></a>
-                            <a href="#" class="soc-link"><svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.8c4.56-.93 8-4.96 8-9.8z"/></svg><span>Facebook</span></a>
-                            <a href="#" class="soc-link"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77 0 2.89 2.89 0 0 1 2.89-2.89h.56V9.44h-.56a6.33 6.33 0 1 0 6.33 6.33V8.81a8.45 8.45 0 0 0 4.13 1.09V6.69z"/></svg><span>TikTok</span></a>
-                        </div>
-                    </div>
+                <details class="faq-acc-item">
+                    <summary>How long does an appointment take?</summary>
+                    <div class="faq-acc-body">Signature Brow Shape: 30–45 min · Brow Lamination: up to 1 hr · Lash Lift: 1 hr · Volume Full Set: up to 2.5 hrs. Extended first-visit slots include a full consultation.</div>
+                </details>
+                <details class="faq-acc-item">
+                    <summary>Can you help me choose a style?</summary>
+                    <div class="faq-acc-body">Absolutely. Extended new-client appointments include a consultation where we examine your bone structure, natural hair growth, and styling goals to map a fully bespoke look.</div>
+                </details>
+                <details class="faq-acc-item">
+                    <summary>What's the lash refill policy?</summary>
+                    <div class="faq-acc-body">Fills recommended every 2–3 weeks. 2-week fill requires ≥60% natural lashes remaining; 3-week fill requires ≥40–50%. Beyond 3 weeks = new Full Set. Arrive with clean, makeup-free lashes.</div>
+                </details>
+                <details class="faq-acc-item">
+                    <summary>Is there a cancellation policy?</summary>
+                    <div class="faq-acc-body">48-hour notice required to reschedule or cancel. Late cancellations incur a 50% fee; no-shows are charged 100% of the service price. We offer a 10-minute grace period for late arrivals.</div>
+                </details>
+                <details class="faq-acc-item">
+                    <summary>Are there any contraindications?</summary>
+                    <div class="faq-acc-body">Brow Lamination and Lash Lift are not recommended while pregnant or breastfeeding, or if you use Retin-A / Retinol. Please avoid Retin-A products 72 hours before a brow appointment. A free Patch Test is available for sensitive skin.</div>
                 </details>
             </div>
         </div>
-        <div class="footer-motto">where we treat your face just like ours</div>
+
+        <!-- Col 3: Contacts + Hours (always visible) -->
+        <div>
+            <span class="f-col-label">Find Us</span>
+            <div class="footer-contact-list">
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <a href="tel:7172689004">717-268-9004</a>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <a href="mailto:info@browsreligion.com">info@browsreligion.com</a>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <div>4444 Lankershim Blvd<br>Suite 207 · Toluca Lake, CA 91602</div>
+                </div>
+            </div>
+            <table class="hours-table">
+                <tr><td>Mon</td><td class="hours-closed">Closed</td></tr>
+                <tr><td>Tue – Fri</td><td>9:00 – 7:00</td></tr>
+                <tr><td>Saturday</td><td>10:00 – 6:00</td></tr>
+                <tr><td>Sun</td><td class="hours-closed">Closed</td></tr>
+            </table>
+            <a href="https://maps.google.com/?q=4444+Lankershim+Blvd+Toluca+Lake+CA+91602" target="_blank" rel="noopener" class="directions-btn">
+                <svg viewBox="0 0 24 24"><path d="M21.71 11.29l-9-9a1 1 0 0 0-1.42 0l-9 9a1 1 0 0 0 0 1.42l9 9a1 1 0 0 0 1.42 0l9-9a1 1 0 0 0 0-1.42zM14 14.5V12h-4v3H8v-4a1 1 0 0 1 1-1h5V7.5l3.5 3.5-3.5 3.5z"/></svg>
+                Get Directions
+            </a>
+        </div>
+
+    </div>
+    <div class="footer-bottom">
+        <span class="footer-motto">where we treat your face just like ours</span>
+        <span class="footer-copy">© 2025 BrowsReligion</span>
     </div>
 </div>
 
