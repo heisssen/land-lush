@@ -1,0 +1,9 @@
+vendor/
+cache/
+compile/
+data/
+.claude/
+composer.phar
+*.log
+.DS_Store
+Thumbs.db
