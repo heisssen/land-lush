@@ -134,6 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lead_name'])) {
         .service-card { display: flex; flex-direction: column; align-items: center; gap: 12px; }
         .service-img { width: 100%; height: 260px; border-radius: 18px; overflow: hidden; }
         .service-label { font: 600 12px/1 var(--sans); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); font-size: 11px; background: rgba(197,168,128,0.12); padding: 4px 10px; border-radius: 10px; }
+        .service-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
         .service-btn {
             display: block; width: 95%; border: 1.5px solid var(--green); padding: 11px 20px; border-radius: 20px;
             font: 500 12px/1 var(--sans); letter-spacing: 1px; text-transform: uppercase; color: var(--green);
@@ -341,9 +342,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lead_name'])) {
 
 <!-- Sticky top bar -->
 <div class="topbar" id="topbar">
-    <span class="topbar-text">✦ <strong>Studio City, LA</strong> · 4444 Lankershim Blvd, Suite 207</span>
-    <a href="https://browsreligion.as.me/" target="_blank" rel="noopener" class="topbar-book">Book Online</a>
     <span class="topbar-text"><strong>717-268-9004</strong></span>
+    <a href="https://browsreligion.as.me/" target="_blank" rel="noopener" class="topbar-book">Book Online</a>
+    <span class="topbar-text">4444 Lankershim Blvd, Suite 207 · Toluca Lake, CA 91602</span>
 </div>
 
 <div class="container">
@@ -440,42 +441,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lead_name'])) {
 </div>
 
 <div class="container">
-
-    <!-- Etiquette -->
-    <section class="etiquette-section" style="padding-top:60px">
-        <p class="sec-eyebrow">Appointment</p>
-        <div class="sec-script" style="font-size:50px;margin-top:-10px">etiquette.</div>
-        <div class="etiquette-grid">
-            <div class="etiquette-card">
-                <span class="etiquette-num">1</span>
-                <h3>Save the Date</h3>
-                <p>Book ahead to secure your slot. A deposit is required for select services and goes toward your total.</p>
-            </div>
-            <div class="etiquette-card">
-                <span class="etiquette-num">2</span>
-                <h3>Cancellations</h3>
-                <p>48-hour notice required to reschedule or cancel. Failure to do so results in a 50% cancellation fee.</p>
-            </div>
-            <div class="etiquette-card">
-                <span class="etiquette-num">3</span>
-                <h3>Running Late?</h3>
-                <p>We offer a 10-minute grace period. More than 15 minutes late may require a reschedule.</p>
-            </div>
-            <div class="etiquette-card">
-                <span class="etiquette-num">4</span>
-                <h3>No Shows</h3>
-                <p>Missed appointments without notice result in a 100% service charge to cover lost slot time.</p>
-            </div>
-            <div class="etiquette-card">
-                <span class="etiquette-num">5</span>
-                <h3>Wellness First</h3>
-                <p>We understand life happens. Please stay home if you are sick — be thoughtful when booking.</p>
-            </div>
-        </div>
-        <div style="margin-top:32px;text-align:center">
-            <a href="https://browsreligion.as.me/" target="_blank" rel="noopener" class="btn-primary">Book Your Appointment →</a>
-        </div>
-    </section>
 
     <!-- ══ PRICING MENU ══ -->
     <section class="menu-section" id="menu">
@@ -686,6 +651,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lead_name'])) {
 
     </section>
 
+    <!-- Etiquette -->
+    <section class="etiquette-section" style="padding-top:60px">
+        <p class="sec-eyebrow">Appointment</p>
+        <div class="sec-script" style="font-size:50px;margin-top:-10px">etiquette.</div>
+        <div class="etiquette-grid">
+            <div class="etiquette-card">
+                <span class="etiquette-num">1</span>
+                <h3>Save the Date</h3>
+                <p>Book ahead to secure your slot. A deposit is required for select services and goes toward your total.</p>
+            </div>
+            <div class="etiquette-card">
+                <span class="etiquette-num">2</span>
+                <h3>Cancellations</h3>
+                <p>48-hour notice required to reschedule or cancel. Failure to do so results in a 50% cancellation fee.</p>
+            </div>
+            <div class="etiquette-card">
+                <span class="etiquette-num">3</span>
+                <h3>Running Late?</h3>
+                <p>We offer a 10-minute grace period. More than 15 minutes late may require a reschedule.</p>
+            </div>
+            <div class="etiquette-card">
+                <span class="etiquette-num">4</span>
+                <h3>No Shows</h3>
+                <p>Missed appointments without notice result in a 100% service charge to cover lost slot time.</p>
+            </div>
+            <div class="etiquette-card">
+                <span class="etiquette-num">5</span>
+                <h3>Wellness First</h3>
+                <p>We understand life happens. Please stay home if you are sick — be thoughtful when booking.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Banner -->
     <div class="cta-banner">
         <div class="cta-banner-script">Ready?</div>
@@ -722,6 +720,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lead_name'])) {
                                 <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>717-268-9004</span></div>
                                 <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><span>info@browsreligion.com</span></div>
                                 <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><div>4444 Lankershim Blvd<br>Toluca Lake, CA 91602<br>Suite 207 (Second Floor)</div></div>
+                                <a href="https://maps.google.com/?q=4444+Lankershim+Blvd+Toluca+Lake+CA+91602" target="_blank" rel="noopener" class="directions-btn" style="margin-top:14px;display:inline-flex;align-items:center;gap:8px">Get Directions</a>
                             </div>
                             <div>
                                 <table class="hours-table">
@@ -737,7 +736,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['lead_name'])) {
                         </div>
                         <div class="map-wrap">
                             <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317.87233787154764!2d-118.3667091330127!3d34.15176373103451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bf5c99971e8b%3A0xbf817ccfb81d309a!2sBrowsReligion%20%7C%20Brows%20%26%20Lash%20Services!5e1!3m2!1suk!2sat!4v1779524545761!5m2!1suk!2sat" allowfullscreen="" loading="lazy"></iframe>
-                            <a href="https://maps.google.com/?q=4444+Lankershim+Blvd+Toluca+Lake+CA+91602" target="_blank" rel="noopener" class="directions-btn">Get Directions</a>
                         </div>
                     </div>
                 </details>

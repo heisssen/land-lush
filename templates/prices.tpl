@@ -23,7 +23,7 @@
   <img src="/image/face-coloure.png" alt="BrowsReligion Studio" class="hero-img">
   <div class="hero-overlay">
     <div class="wrap">
-      <p class="hero-tag">Studio City · Los Angeles</p>
+      <p class="hero-tag">Toluca Lake · Los Angeles</p>
       <h1>Services &<br><em>Pricing</em></h1>
       <p class="hero-address">4444 Lankershim Blvd, Suite 207</p>
     </div>
@@ -213,7 +213,7 @@
   <div class="wrap cta-inner">
     <div>
       <h2>Ready to book?</h2>
-      <p>4444 Lankershim Blvd, Suite 207 · Studio City, LA<br>
+      <p>4444 Lankershim Blvd, Suite 207 · Toluca Lake, CA 91602<br>
          <a href="mailto:info@browsreligion.com">info@browsreligion.com</a>
       </p>
     </div>
