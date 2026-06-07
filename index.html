@@ -227,13 +227,13 @@
         /* ─── FAQ / Footer ─── */
         .footer-bg {
             background: var(--green); color: var(--white);
-            padding: 64px 0 0;
+            padding: 64px 0 100px;
             margin-left: calc(-50vw + 50%);
             margin-right: calc(-50vw + 50%);
         }
         .footer-grid {
             max-width: 1050px; margin: 0 auto; padding: 0 20px 50px;
-            display: grid; grid-template-columns: 1fr 1.4fr 1.1fr; gap: 50px;
+            display: grid; grid-template-columns: 1fr 1.1fr; gap: 50px;
         }
 
         /* col 1 — brand */
@@ -248,8 +248,10 @@
         .soc-link:hover { color: var(--gold); }
         .soc-link:hover svg { transform: scale(1.15); fill: var(--white); }
 
-        /* col 2 — FAQ accordion */
+        /* col label */
         .f-col-label { font-size: 10px; text-transform: uppercase; letter-spacing: 4px; color: var(--gold); font-weight: 600; margin-bottom: 20px; display: block; }
+
+        /* ─── FAQ accordion (dark variant — inside footer) ─── */
         .faq-acc { display: flex; flex-direction: column; gap: 6px; }
         .faq-acc-item { border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; }
         .faq-acc-item[open] { border-color: rgba(197,168,128,0.45); background: rgba(255,255,255,0.04); }
@@ -263,6 +265,14 @@
         .faq-acc-item summary::after { content: '+'; font-size: 18px; color: var(--gold); font-weight: 300; flex-shrink: 0; margin-left: 12px; }
         .faq-acc-item[open] summary::after { content: '−'; }
         .faq-acc-body { padding: 14px 18px 18px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 13.5px; color: rgba(224,230,226,0.85); line-height: 1.7; font-weight: 300; }
+
+        /* ─── FAQ section (light, above footer) ─── */
+        .faq-section { padding: 60px 0; border-top: 1px solid rgba(13,42,24,0.08); }
+        .faq-acc.faq-light .faq-acc-item { border-color: rgba(13,42,24,0.1); background: var(--white); box-shadow: 0 2px 8px rgba(13,42,24,0.03); }
+        .faq-acc.faq-light .faq-acc-item[open] { border-color: var(--gold); }
+        .faq-acc.faq-light .faq-acc-item summary { color: var(--dark); }
+        .faq-acc.faq-light .faq-acc-item summary::after { color: var(--gold); }
+        .faq-acc.faq-light .faq-acc-body { border-top-color: rgba(13,42,24,0.06); color: var(--muted); }
 
         /* col 3 — contacts (always visible) */
         .footer-contact-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 22px; }
@@ -292,6 +302,13 @@
         }
         .footer-motto { font-family: var(--script); font-size: 28px; color: var(--gold); }
         .footer-copy { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 1px; }
+        /* socials strip at the very bottom */
+        .footer-socials-strip {
+            max-width: 1050px; margin: 0 auto;
+            padding: 10px 20px 0;
+            display: flex; justify-content: center; gap: 32px;
+        }
+        .footer-socials-strip .soc-link { flex-direction: row; gap: 8px; font-size: 11px; }
 
         /* ─── Floating buttons ─── */
         .fab-book, .fab-wa {
@@ -324,87 +341,136 @@
         .scroll-top-btn svg { width: 18px; height: 18px; fill: var(--white); }
 
         /* ─── Responsive ─── */
-
-        /* prevent full-width sections from causing h-scroll */
         html, body { overflow-x: hidden; }
 
+        /* ── Tablets wide ── */
         @media (max-width: 1024px) {
             .ext-grid { grid-template-columns: 1fr 1fr; }
         }
 
+        /* ── Tablets narrow ── */
         @media (max-width: 900px) {
             .ext-grid { grid-template-columns: 1fr; }
             .bundles-grid { grid-template-columns: 1fr; }
             .gifts-grid { grid-template-columns: 1fr 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 36px; }
             .fab-book, .fab-wa { padding: 12px 18px; font-size: 10px; gap: 7px; }
             .fab-book svg, .fab-wa svg { width: 15px; height: 15px; }
         }
 
+        /* ── Mobile landscape / large phone ── */
         @media (max-width: 768px) {
-            /* topbar: address on its own row, smaller text */
-            .topbar { flex-direction: column; gap: 6px; padding: 8px 16px; text-align: center; }
-            .topbar-address { order: 2; font-size: 10px; opacity: 0.6; }
-            .topbar-book { order: 1; }
-            .topbar-phone { order: 0; }
-
-            .artist-section { grid-template-columns: 1fr; }
+            .artist-section { grid-template-columns: 1fr; gap: 24px; padding: 16px 0 50px; }
             .artist-section > div:first-child { order: 2; }
-            .artist-img-wrap { height: 320px; order: 1; }
+            .artist-img-wrap { height: 300px; order: 1; }
+            .artist-text { text-align: left; }
 
-            .services-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
-            .service-img { height: 200px; }
+            .services-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+            .service-img { height: 190px; }
+            .services-section { padding: 0 0 50px; }
 
             .etiquette-grid { grid-template-columns: 1fr 1fr; }
+            .etiquette-section { padding: 0 0 50px; }
 
             .artists-grid { grid-template-columns: 1fr; }
-
-            /* special services 2-col → 1-col */
             div[style*="1.6fr"] { display: flex !important; flex-direction: column; }
 
-            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-            .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
-
-            .cta-banner { padding: 36px 22px; }
-            .cta-banner-script { font-size: 38px; }
-            .cta-banner-title { font-size: 22px; }
-            .btn-gold-lg { padding: 14px 32px; font-size: 12px; }
-
+            .cat-title { font-size: 26px; }
+            .menu-section { padding: 40px 0 20px; }
             .menu-block { padding: 22px 18px; }
-            .block-cta { flex-direction: column; align-items: flex-start; }
+            .block-cta { flex-direction: column; align-items: stretch; }
+            .block-cta .btn-primary { justify-content: center; }
 
             .single-svc { flex-direction: column; align-items: flex-start; gap: 12px; }
             .single-svc-price { text-align: left; }
 
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; gap: 6px; }
+
+            .cta-banner { padding: 36px 22px; border-radius: 12px; margin: 36px 0; }
+            .cta-banner-script { font-size: 38px; }
+            .cta-banner-title { font-size: 22px; }
+            .btn-gold-lg { padding: 14px 32px; font-size: 12px; width: 100%; justify-content: center; }
+
             .sec-script { font-size: 44px !important; }
 
+            .lead-section { padding: 48px 16px; }
             .lead-title { font-size: 26px; }
             .lead-form { flex-direction: column; }
             .lead-input { flex: 1 1 auto; }
+
+            .faq-section { padding: 48px 0; }
         }
 
+        /* ── Small phone (≤600px) ── */
         @media (max-width: 600px) {
-            /* topbar: collapse to just phone + book button, hide address */
-            .topbar { flex-direction: row; justify-content: space-between; padding: 9px 16px; gap: 0; }
+            /* topbar: compact row, address hidden */
+            .topbar { flex-direction: row; justify-content: space-between; align-items: center; padding: 9px 16px; gap: 0; flex-wrap: nowrap; }
             .topbar-address { display: none; }
             .topbar-text { font-size: 11px; }
+            .topbar-book { padding: 8px 16px; }
 
-            .logo-title { font-size: 32px; }
-            .site-header { padding: 40px 16px 30px; }
-            .avatar-wrap { width: 88px; height: 132px; }
+            body { font-size: 15px; }
+            .container { padding: 0 16px; }
 
-            .services-grid { grid-template-columns: 1fr; gap: 20px; }
+            .site-header { padding: 36px 16px 22px; }
+            .logo-title { font-size: 30px; }
+            .logo-sub { font-size: 11px; letter-spacing: 3px; }
+            .avatar-wrap { width: 84px; height: 126px; }
 
-            .proof-strip { gap: 12px; }
+            .proof-strip { gap: 10px; }
             .proof-sep { display: none; }
+            .proof-text { font-size: 11px; }
+
+            .artist-section { padding: 10px 0 36px; gap: 20px; }
+            .artist-img-wrap { height: 260px; }
+            .artist-cta { flex-direction: column; gap: 10px; }
+            .artist-cta .btn-primary,
+            .artist-cta .btn-outline { width: 100%; justify-content: center; }
+
+            .services-section { padding: 0 0 36px; }
+            .services-grid { grid-template-columns: 1fr; gap: 18px; }
+            .service-img { height: 220px; }
 
             .etiquette-grid { grid-template-columns: 1fr; }
+            .etiquette-section { padding: 0 0 36px; }
+            .etiquette-card { padding: 24px 16px; }
+            .etiquette-num { font-size: 40px; }
+
+            .lead-section { padding: 36px 16px; }
+            .lead-title { font-size: 22px; }
+            .lead-sub { font-size: 13px; }
+            .lead-input { font-size: 16px; } /* prevent iOS auto-zoom */
+
+            .cat-title { font-size: 22px; }
+            .menu-section { padding: 32px 0 16px; }
+            .menu-block { padding: 18px 14px; border-radius: 12px; margin-bottom: 22px; }
+            .block-title { font-size: 19px; }
+            .tier-label { font-size: 11px; letter-spacing: 0.5px; }
+            .tier-price { font-size: 15px; }
+            .ext-desc { min-height: auto; }
+            .ext-card { padding: 20px 16px; }
+            .bundle-card { padding: 20px 16px; }
+
+            .addons-section { padding: 0 0 36px; }
+            .addons-grid { grid-template-columns: 1fr; }
+            .addon-row { border-right: none; }
+            .bundles-section { padding: 0 0 36px; }
 
             .gifts-grid { grid-template-columns: 1fr 1fr; }
-            .bundles-grid { grid-template-columns: 1fr; }
 
+            .cta-banner { margin: 28px 0; padding: 28px 16px; border-radius: 10px; }
+            .cta-banner-script { font-size: 32px; }
+            .cta-banner-title { font-size: 20px; }
+            .cta-banner-sub { font-size: 13px; margin-bottom: 20px; }
+
+            .faq-section { padding: 32px 0; }
+
+            .footer-bg { padding: 48px 0 90px; }
+            .footer-brand h2 { font-size: 15px; }
             .footer-talks { font-size: 48px; }
             .footer-motto { font-size: 22px; }
+            .footer-socials-strip { gap: 22px; }
 
             .scroll-top-btn { bottom: 78px; right: 16px; width: 36px; height: 36px; }
             .fab-book { bottom: 16px; right: 16px; }
@@ -769,7 +835,42 @@
 
 </div><!-- /container -->
 
-<!-- FAQ / Footer -->
+<!-- FAQ Section -->
+<div class="container">
+    <section class="faq-section" id="faq">
+        <p class="sec-eyebrow" style="text-align:center">Frequently Asked</p>
+        <div class="sec-script" style="font-size:50px;text-align:center;margin-top:-12px">Questions</div>
+        <span class="gold-rule" style="display:block;margin:12px auto 36px"></span>
+        <div class="faq-acc faq-light" style="max-width:780px;margin:0 auto">
+            <details class="faq-acc-item" open>
+                <summary>What services do you offer?</summary>
+                <div class="faq-acc-body">Premium brow shaping, lamination, and bespoke lash extensions — everything designed to frame your natural beauty. Both Alena (Master Artist) and Tanya (Brow / Lash Specialist) are available to book.</div>
+            </details>
+            <details class="faq-acc-item">
+                <summary>How long does an appointment take?</summary>
+                <div class="faq-acc-body">Signature Brow Shape: 30–45 min · Brow Lamination: up to 1 hr · Lash Lift: 1 hr · Volume Full Set: up to 2.5 hrs. Extended first-visit slots include a full consultation.</div>
+            </details>
+            <details class="faq-acc-item">
+                <summary>Can you help me choose a style?</summary>
+                <div class="faq-acc-body">Absolutely. Extended new-client appointments include a consultation where we examine your bone structure, natural hair growth, and styling goals to map a fully bespoke look.</div>
+            </details>
+            <details class="faq-acc-item">
+                <summary>What's the lash refill policy?</summary>
+                <div class="faq-acc-body">Fills recommended every 2–3 weeks. 2-week fill requires ≥60% natural lashes remaining; 3-week fill requires ≥40–50%. Beyond 3 weeks = new Full Set. Arrive with clean, makeup-free lashes.</div>
+            </details>
+            <details class="faq-acc-item">
+                <summary>Is there a cancellation policy?</summary>
+                <div class="faq-acc-body">48-hour notice required to reschedule or cancel. Late cancellations incur a 50% fee; no-shows are charged 100% of the service price. We offer a 10-minute grace period for late arrivals.</div>
+            </details>
+            <details class="faq-acc-item">
+                <summary>Are there any contraindications?</summary>
+                <div class="faq-acc-body">Brow Lamination and Lash Lift are not recommended while pregnant or breastfeeding, or if you use Retin-A / Retinol. Please avoid Retin-A products 72 hours before a brow appointment. A free Patch Test is available for sensitive skin.</div>
+            </details>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
 <div class="footer-bg" id="contact">
     <div class="footer-grid">
 
@@ -778,57 +879,9 @@
             <h2>browsreligion</h2>
             <div class="footer-talks">talks.</div>
             <p class="footer-brand-sub">Luxury brow &amp; lash studio<br>Studio City, Los Angeles</p>
-            <div class="footer-brand-img">
-                <img src="image/bottomIMG1.png" alt="">
-            </div>
-            <div class="f-socials">
-                <a href="https://www.instagram.com/browsreligion" target="_blank" rel="noopener" class="soc-link">
-                    <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
-                    <span>Instagram</span>
-                </a>
-                <a href="#" class="soc-link">
-                    <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
-                    <span>Facebook</span>
-                </a>
-                <a href="#" class="soc-link">
-                    <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77 0 2.89 2.89 0 0 1 2.89-2.89h.56V9.44h-.56a6.33 6.33 0 1 0 6.33 6.33V8.81a8.45 8.45 0 0 0 4.13 1.09V6.69z"/></svg>
-                    <span>TikTok</span>
-                </a>
-            </div>
         </div>
 
-        <!-- Col 2: FAQ accordion -->
-        <div>
-            <span class="f-col-label">Frequently Asked</span>
-            <div class="faq-acc">
-                <details class="faq-acc-item" open>
-                    <summary>What services do you offer?</summary>
-                    <div class="faq-acc-body">Premium brow shaping, lamination, and bespoke lash extensions — everything designed to frame your natural beauty. Both Alena (Master Artist) and Tanya (Brow / Lash Specialist) are available to book.</div>
-                </details>
-                <details class="faq-acc-item">
-                    <summary>How long does an appointment take?</summary>
-                    <div class="faq-acc-body">Signature Brow Shape: 30–45 min · Brow Lamination: up to 1 hr · Lash Lift: 1 hr · Volume Full Set: up to 2.5 hrs. Extended first-visit slots include a full consultation.</div>
-                </details>
-                <details class="faq-acc-item">
-                    <summary>Can you help me choose a style?</summary>
-                    <div class="faq-acc-body">Absolutely. Extended new-client appointments include a consultation where we examine your bone structure, natural hair growth, and styling goals to map a fully bespoke look.</div>
-                </details>
-                <details class="faq-acc-item">
-                    <summary>What's the lash refill policy?</summary>
-                    <div class="faq-acc-body">Fills recommended every 2–3 weeks. 2-week fill requires ≥60% natural lashes remaining; 3-week fill requires ≥40–50%. Beyond 3 weeks = new Full Set. Arrive with clean, makeup-free lashes.</div>
-                </details>
-                <details class="faq-acc-item">
-                    <summary>Is there a cancellation policy?</summary>
-                    <div class="faq-acc-body">48-hour notice required to reschedule or cancel. Late cancellations incur a 50% fee; no-shows are charged 100% of the service price. We offer a 10-minute grace period for late arrivals.</div>
-                </details>
-                <details class="faq-acc-item">
-                    <summary>Are there any contraindications?</summary>
-                    <div class="faq-acc-body">Brow Lamination and Lash Lift are not recommended while pregnant or breastfeeding, or if you use Retin-A / Retinol. Please avoid Retin-A products 72 hours before a brow appointment. A free Patch Test is available for sensitive skin.</div>
-                </details>
-            </div>
-        </div>
-
-        <!-- Col 3: Contacts + Hours (always visible) -->
+        <!-- Col 2: Contacts + Hours -->
         <div>
             <span class="f-col-label">Find Us</span>
             <div class="footer-contact-list">
@@ -861,6 +914,20 @@
     <div class="footer-bottom">
         <span class="footer-motto">where we treat your face just like ours</span>
         <span class="footer-copy">© 2025 BrowsReligion</span>
+    </div>
+    <div class="footer-socials-strip">
+        <a href="https://www.instagram.com/browsreligion" target="_blank" rel="noopener" class="soc-link">
+            <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6m9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+            <span>Instagram</span>
+        </a>
+        <a href="#" class="soc-link">
+            <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+            <span>Facebook</span>
+        </a>
+        <a href="#" class="soc-link">
+            <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77 0 2.89 2.89 0 0 1 2.89-2.89h.56V9.44h-.56a6.33 6.33 0 1 0 6.33 6.33V8.81a8.45 8.45 0 0 0 4.13 1.09V6.69z"/></svg>
+            <span>TikTok</span>
+        </a>
     </div>
 </div>
 
